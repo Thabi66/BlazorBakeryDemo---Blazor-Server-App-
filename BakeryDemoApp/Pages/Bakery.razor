@@ -1,0 +1,43 @@
+﻿@page "/bakeryDemo"
+
+@using BakeryDemoApp.Data
+@inject WeatherForecastService ForecastService
+
+<h3>Bakery</h3>
+<p>Bakery Data and a few tables modelled from the bakery Database</p>
+
+<h4>Menu Items</h4>
+<p>All the items listed in the bakery menu. </p>
+@if (MenuItems is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var MI in MenuItems)
+            {
+                <tr>
+                    <td>@MI.Id</td>
+                    <td>@MI.ItemName</td>
+                    <td>@MI.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    //Generic of model for bakery items 
+    private List<BakeryData> MenuItems;
+
+
+}
